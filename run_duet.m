@@ -12,8 +12,6 @@ numfreq=1024;
 awin=hamming(wlen);%analysis window is a Hamming window Looks like Sine on [0,pi]
 [x1,fs,nbits] = wavread('data/x1.wav');
 x2 = wavread('data/x2.wav');
-% tf1 tf2 look like left right channel
-% question: why is it important to two have left right channel
 tf1=tfanalysis(x1,awin,timestep,numfreq);%time-freq domain
 tf2=tfanalysis(x2,awin,timestep,numfreq);%time-freq domain
 
@@ -23,7 +21,7 @@ tf2(1,:)=[];%remove dc component from mixtures
 
 %calculate pos/neg frequencies for later use in delay calc ??
 freq=[(1:numfreq/2) ((-numfreq/2)+1:-1)]*(2*pi/(numfreq)); % freq looks like saw signal
-fmat=freq(ones(size(tf1,2),1),:)'; % why just tf1
+fmat=freq(ones(size(tf1,2),1),:)';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %2.calculate alpha and delta for each t-f point
