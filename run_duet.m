@@ -77,8 +77,14 @@ mesh(linspace(-maxd,maxd,dbins),linspace(-maxa,maxa,abins),A);
 %5) Find the location of each peak. 
 
 numsources=5;
+
+% peak estimates provided in source code
 peakdelta=[-2 -2 0 2 2];
 peakalpha=[.19 -.21 0 .19 -.21];
+
+% my own peak estimates. I'm not sure the ones provided are correct.
+peakdelta=[-1.4 .66 1.25 1.9 .51];
+peakalpha=[.4 -.29 .12 .66 -.5];
 
 %convert alpha to a
 peaka=(peakalpha+sqrt(peakalpha.^2+4))/2;
@@ -115,5 +121,5 @@ for i=1:numsources
 
     %add back into the demix a little bit of the mixture
     %as that eliminates most of the masking artifacts
-    soundsc(est(i,:)+0.05*x1',fs);pause;% original code seems to have missed the transpose play demixture
+    soundsc(est(i,:)+0.05*x1',fs);% original code seems to have missed the transpose play demixture
 end
