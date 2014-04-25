@@ -10,8 +10,8 @@ wlen=1024;
 timestep=512;
 numfreq=1024;
 awin=hamming(wlen);%analysis window is a Hamming window Looks like Sine on [0,pi]
-[x1,fs,nbits] = wavread('data/x1.wav');
-x2 = wavread('data/x2.wav');
+[x1,fs,nbits] = wavread('data/x1_reverb.wav');
+x2 = wavread('data/x2_reverb.wav');
 tf1=tfanalysis(x1,awin,timestep,numfreq);%time-freq domain
 tf2=tfanalysis(x2,awin,timestep,numfreq);%time-freq domain
 
