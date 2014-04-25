@@ -6,3 +6,5 @@ Code is literally copy pasted from [this publication](http://link.springer.com/c
 
 
 Course webpage http://www.cs.northwestern.edu/~pardo/courses/casa/papers.php
+
+Use `run_duet.m` to run the algorithm.
