@@ -1,16 +1,18 @@
 function x=tfsynthesis(timefreqmat,swin,timestep,numfreq)
-%time-frequencysynthesis
-%TIMEFREQMATisthecomplexmatrixtime-freqrepresentation
-%SWINisthesynthesiswindow
-%TIMESTEPisthe#ofsamplesbetweenadjacenttimewindows.
-%NUMFREQisthe#offrequencycomponentspertimepoint.
+%time-frequency synthesis
+%TIMEFREQMAT is the complex matrix time-freq representation
+%SWIN is the synthesis window
+%TIMESTEP is the # of samples between adjacent time windows.
+%NUMFREQ is the # of frequency components per time point.
 %
-%Xcontainsthereconstructedsignal.
-swin=swin(:);%makesynthesiswindowgocolumnwise
+%X contains the reconstructed signal.
+
+swin=swin(:);%make synthesis window go column-wise
 winlen=length(swin);
 [numfreq numtime]=size(timefreqmat);
 ind=rem((1:winlen)-1,numfreq)+1;
 x=zeros((numtime-1)*timestep+winlen,1);
+
 for i=1:numtime%overlap,window,andadd
     temp=numfreq*real(ifft(timefreqmat(:,i)));
     sind=((i-1)*timestep);
