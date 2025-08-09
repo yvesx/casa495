@@ -52,17 +52,17 @@ dbins = 50; % number of hist bins for alpha, delta
 
 % only consider time-freq points yielding estimates in bounds
 amask=(abs(alpha)<maxa)&(abs(delta)<maxd);
-alphavec = alpha(amask);
-deltavec = delta(amask);
+alpha_vec = alpha(amask);
+delta_vec = delta(amask);
 tfweight = tfweight(amask);
 
 % determine histogram indices sampled indices?
-alphaind = round(1+(abins-1)*(alphavec+maxa)/(2*maxa));
-deltaind = round(1+(dbins-1)*(deltavec+maxd)/(2*maxd));
+alpha_ind = round(1+(abins-1)*(alpha_vec+maxa)/(2*maxa));
+delta_ind = round(1+(dbins-1)*(delta_vec+maxd)/(2*maxd));
 
 % FULL-SPARSE TRICK TO CREATE 2D WEIGHTED HISTOGRAM
-% A(alphaind(k),deltaind(k)) = tfweight(k), S is abins-by-dbins
-A = full(sparse(alphaind,deltaind,tfweight,abins,dbins));
+% A(alpha_ind(k),delta_ind(k)) = tfweight(k), S is abins-by-dbins
+A = full(sparse(alpha_ind,delta_ind,tfweight,abins,dbins));
 % smooth the histogram - local average 3-by-3 neighboring bins
 A = twoDsmooth(A,3);
 % plot 2-D histogram

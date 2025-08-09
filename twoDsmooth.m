@@ -1,11 +1,11 @@
 function smat = twoDsmooth(mat,ker)
-%TWO2SMOOTH ? Smooth 2D matrix.
+%TWO2SMOOTH - Smooth 2D matrix.
 %
 % smat = twoDsmooth(mat,ker)
 %
 % MAT is the 2D matrix to be smoothed.
 % KER is either
-%  (1) a scalar, in which case a ker?by?ker matrix of 1/ker?2 is used
+%  (1) a scalar, in which case a ker-by-ker matrix of 1/ker^2 is used
 %      as the matrix averaging kernel
 %  (2) a matrix which is used as the averaging kernel.
 %
